@@ -99,6 +99,38 @@ public class BasicContorller {
         return "basic/attribute";
     }
 
+    @GetMapping("/each")
+    public String each(Model model) {
+        return "basic/each";
+    }
+
+    @GetMapping("/condition")
+    public String condition(Model model) {
+        addUsers(model);
+        return "basic/condition";
+    }
+
+    @GetMapping("/comments")
+    public String comment(Model model) {
+        model.addAttribute("data", "Spring!");
+        return "basic/comments";
+    }
+
+    @GetMapping("/block")
+    public String block(Model model) {
+        addUsers(model);
+        return "basic/block";
+    }
+
+    private void addUsers(Model model) {
+        List<User> list = new ArrayList<>();
+        list.add(new User("UserA", 10));
+        list.add(new User("UserB", 20));
+        list.add(new User("UserC", 30));
+
+        model.addAttribute("users", list);
+    }
+
 
     @Component("helloBean")
     static class HelloBean {
